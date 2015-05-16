@@ -2,7 +2,7 @@
   "name": "es6exp",
   "version": "0.0.1",
   "description": "some tests for learn es6 features",
-  "main": "index.js",
+  "main": "out/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

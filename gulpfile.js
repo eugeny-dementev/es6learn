@@ -3,6 +3,6 @@ var gulp = require('gulp'),
 
 gulp.task('default', function() {
 	return gulp.src('src/*.js')
-		.pipe(babel({modules: 'common'))
-		.pipe(gulp.dest('.'));
+		.pipe(babel({modules: 'common'}))
+		.pipe(gulp.dest('out'));
 });
