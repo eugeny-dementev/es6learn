@@ -1,13 +1,10 @@
-import handler from './classes.js';
+import miniEmitter from './lib/emitter.js';
+import Logger from './lib/logger.js';
 
-var elem = (hello) => {
-  console.log(hello);
-}
+var handler = new miniEmitter,
+    logger = new Logger(console.log);
 
-elem('hello from labmda ;)');
-elem(handler);
-
-handler.on('h', () => console.log('hello'));
+handler.on('h', () => logger.log('miniEmitter is alive!!!!11'));
 
 handler.emit('h');
 
