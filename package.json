@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/eugeny-dementev/es6learn/issues"
   },
-  "homepage": "https://github.com/eugeny-dementev/es6learn"
+  "homepage": "https://github.com/eugeny-dementev/es6learn",
+  "dependencies": {
+    "babel": "^5.4.7",
+    "babel-runtime": "^5.4.7",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0"
+  }
 }
