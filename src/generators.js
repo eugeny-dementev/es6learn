@@ -1,8 +1,11 @@
-// var itarable = (for (x of [1, 2, 3]) x + 1); // support in es7 mode (generator comprehensions)
-// var newArray = [for (x of [1, 2, 3]) x + 1]; // support in es7 mode (generator comprehensions)
+var itarable = (for (x of [1, 2, 3]) x + 1); // support in es7 mode (generator comprehensions) stage 0
+var newArray = [for (x of [1, 2, 3]) x - 1]; // support in es7 mode (generator comprehensions) stage 0
+
+for (let num of itarable) console.log('num of = ', num);
+for (let num of newArray) console.log('num of = ', num);
 
 let iterable = function* () {
-  // this function * returns function with constructor function property.
+  // this function* returns function with constructor function property.
   // exec of this function return iterable object with methods: next, throw, return and symbon object.
   // for-of operator use this interface.
   yield 1;
