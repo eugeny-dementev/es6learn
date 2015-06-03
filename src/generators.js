@@ -60,6 +60,10 @@ console.log('iterable[Symbol.iterator]() result:', iterable[Symbol.iterator]());
 for (let i of iterable) // make iterator
   console.log('first iterate:', i);
 
-for (let i of iterable) // make another one iterator
-    console.log('second iterate:', i);
-
+var iii = iterable[Symbol.iterator]();
+for (let i of iii) { // make another one iterator
+  console.log('second iterate:', i);
+  if (i > 1) break; // this invoke return method
+}
+// and after break iii.next return "{done: true}"
+console.log('iii.next():', iii.next());
