@@ -1,14 +1,14 @@
-var itarable = (for (x of [1, 2, 3]) x + 1); // support in es7 mode (generator comprehensions) stage 0 babel
-console.log('itarable obj: ', itarable); // return object of regeneratorRuntime lib, have only method _invoke (iterable object)
-for (let num of itarable) console.log('num of = ', num);
+var iterator = (for (x of [1, 2, 3]) x + 1); // support in es7 mode (generator comprehensions) stage 0 babel
+console.log('iterator obj: ', iterator); // return object of regeneratorRuntime lib, have only method _invoke (iterator object)
+for (let num of iterator) console.log('num of = ', num);
 
 var newArray = [for (x of [1, 2, 3]) x - 1]; // support in es7 mode (generator comprehensions) stage 0
 console.log('newArray obj: ', newArray); // just array of results
 for (let num of newArray) console.log('num of = ', num);
 
-function* generalor() {
+function* generator() {
   // this function* returns function with constructor function property.
-  // exec of this function return iterable object with methods: next, throw, return and symbol object.
+  // exec of this function return iterator object with methods: next, throw, return and symbol object.
   // (but in babel return special object wrapper of regeneratorRuntime lib with only _invoke method)
   // for-of operator use this interface.
   yield 1;
@@ -16,17 +16,17 @@ function* generalor() {
   yield 3;
   yield 4;
   yield 5;
-}; // need to exec for get itarable object
+} // need to exec for get iterator object
 
-console.log('generalor geenerator function: ', generalor); // function with every execute return new iterable object
+console.log('generator geenerator function: ', generator); // function with every execute return new iteratorFromGen object
 
-let iterable = generalor();
+var iteratorFromGen = generator();
 
-console.log('iterable obj, result of generalor: ', iterable);
+console.log('iterator obj, result of generator: ', iteratorFromGen);
 
-for (let x of iterable) console.log(x);
+for (let x of iteratorFromGen) console.log(x);
 
-// infinity irerable
+// infinity iterator
 
 let ii = function* () {
   let i = 0;
@@ -35,31 +35,31 @@ let ii = function* () {
 
 
 console.log(ii.next()); // return object {value: 0, done: false} - done is sign to stop iterate.
-
-console.log(ii.next(400)); // not the same as python, for example. just return {value: 1, done: false}
-
+console.log(ii.next(400)); // not the same as python, just return {value: 1, done: false}, of course we can make own behaviour
 console.log(ii.next()); // return object {value: 2, done: false}
-
 console.log(ii.return()); // return object {value: undefined, done: true} // in babel
 
-var pleaseDontStop = 5
-for(let i of ii) // will never execute, because return() method executed before.
+var pleaseDontStop = 5;
+for (let i of ii) // will never execute, because return() method executed before.
   if (pleaseDontStop--)
     console.log('value:', i);
   else break;
 
-var iter = {
+var iterable = {
+  // object with [Symbol.iterator] method named iterable object,
+  // for-or loop work with him different, every time we make for-of loop creates new iterator object.
   [Symbol.iterator]: function* () {
     var i = 0;
-    while (true) yield i++;
+    while (i < 5) yield i++;
   }
-}
+};
 
-console.log('iter obj:', iter); // looks like empty obj, have only [Sybmol.iterator] method really.
-console.log('iter.[Symbol.iterator]() result:', iter[Symbol.iterator]()); // return regeneratorRuntime lib wrapper
+console.log('iterable obj:', iterable); // looks like empty obj, have only [Sybmol.iterator] method really.
+console.log('iterable[Symbol.iterator]() result:', iterable[Symbol.iterator]()); // return regeneratorRuntime lib wrapper
 
-pleaseDontStop = 5;
-for (let i of iter)
-  if (pleaseDontStop--)
-    console.log('iter value' + i);
-  else break; // break will exec return() method of iterable object
+for (let i of iterable) // make iterator
+  console.log('first iterate:', i);
+
+for (let i of iterable) // make another one iterator
+    console.log('second iterate:', i);
+
