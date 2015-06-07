@@ -22,8 +22,7 @@ var iterable = { // iterable object is any object with [Symbol.iterator] method.
 
 Number.prototype[Symbol.iterator] = function getIterator(step = 1) {
   var top = +this,
-    itr = top > 0 ? 1 : -1,
-    itr = itr * step,
+    itr = (top > 0 ? 1 : -1) * step,
     cur = 0 - itr;
 
   return {
@@ -38,7 +37,7 @@ Number.prototype[Symbol.iterator] = function getIterator(step = 1) {
       return { done: true };
     }
   }
-}
+};
 
 console.log('numbers:', [...3]);
 
