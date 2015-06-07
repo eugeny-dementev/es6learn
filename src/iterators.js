@@ -20,7 +20,27 @@ var iterable = { // iterable object is any object with [Symbol.iterator] method.
   hello: 'hello'
 };
 
+Number.prototype[Symbol.iterator] = function getIterator(step = 1) {
+  var top = +this,
+    itr = top > 0 ? 1 : -1,
+    itr = itr * step,
+    cur = 0 - itr;
 
+  return {
+    next() {
+      return {
+        done: cur === top,
+        value: cur += itr
+      };
+    },
+    return() {
+      cur = top;
+      return { done: true };
+    }
+  }
+}
+
+console.log('numbers:', [...3]);
 
 var iterator = iterable[Symbol.iterator]();
 // [Symbol.iterator] must return object with method next()
