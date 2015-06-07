@@ -7,6 +7,10 @@ var iterable = { // iterable object is any object with [Symbol.iterator] method.
     let i = 0,
       done = false;
     return {
+      [Symbol.iterator]() {
+        // same result as for result of generator function
+        return this;
+      },
       next() {
         if (i > 10) done = true;
         return { done, value: i++ };
@@ -26,6 +30,10 @@ Number.prototype[Symbol.iterator] = function getIterator(step = 1) {
     cur = 0 - itr;
 
   return {
+    [Symbol.iterator]() {
+      // same result as for result of generator function
+      return this;
+    },
     next() {
       return {
         done: cur === top,
@@ -57,4 +65,7 @@ for (let i of iterable) {
   if (i > 4) break;
 }
 
-console.log([...iterable]);
+console.log('spread iterable', [...iterable]); // spread operator understend iterator interface
+
+var [a, b, n] = iterable; // destructuring also can use iter, really awesome
+console.log('destruct iterable:', a, b, n);
