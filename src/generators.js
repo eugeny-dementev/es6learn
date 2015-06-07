@@ -68,3 +68,12 @@ for (let i of iii) { // make another one iterator
 console.log('generator return iterator with Symbol.iterator method:', iii[Symbol.iterator]);
 // and after break iii.next return "{done: true}"
 console.log('iii.next():', iii.next());
+
+// hmm, what really return yield?
+function* gumble() {
+  var x = yield 'hell';
+  console.log(x); // print 'hell'
+}
+
+for (let i of gumble())
+  console.log(i); // print nothing
