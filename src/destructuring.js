@@ -9,14 +9,17 @@ print();
 spreadArr(...arr); // spread operator is lovely
 
 /*
- * destructuring assignment supports only with creation of variables
+ * destructuring OBJECT assignment supports only with creation of variables
  *
  * this wrong:
  *
  *  var num, str;
- *  [num, str] = [1, ''];
  *  {num, str} = {num: 1, str: ''};
  */
+
+var n, s;
+[n, s] = [1, 'hel'];
+console.log('n and s:', n , s);
 
 function print() {
   printObj({num, str, arr});
