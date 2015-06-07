@@ -22,7 +22,7 @@ var n, s;
 console.log('n and s:', n , s);
 
 function print() {
-  printObj({num, str, arr});
+  printObj({num, str, arr} = {num: 0, str: '', arr: []});
 }
 
 function spreadArr(num, str, arr) {
