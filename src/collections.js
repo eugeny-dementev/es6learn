@@ -39,3 +39,16 @@ function checkWeakness() {
   weakMap.set(value, value);
   console.log('weakMap size in func:', weakMap.length);
 }
+
+/*
+ * Set like a filter for repeating
+ * Any value can be in with only one time.
+ */
+
+var set = new Set();
+set.add('val');
+set.add('val');
+set.add('lav');
+set.add('val');
+
+console.log(...set); // and like many in es6, collection can be iterate
