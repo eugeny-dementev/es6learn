@@ -77,3 +77,10 @@ function* gumble() {
 
 for (let i of gumble())
   console.log(i); // print nothing
+
+function* yieldDelegate() {
+  yield *iterable; // yield delegation. Require iterable object
+}
+
+for (let i of iterable)
+  console.log('delegated yield:', i);
