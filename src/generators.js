@@ -84,3 +84,22 @@ function* yieldDelegate() {
 
 for (let i of iterable)
   console.log('delegated yield:', i);
+
+function* returnable() {
+  yield 1;
+  yield 1;
+  yield 1;
+  yield 1;
+  return 'wow'; // yield is for pause and iterate. Generator function also can return
+}
+
+function* returnableUser() {
+  var result = yield *returnable();
+  console.log('returnable message:', result);
+}
+
+for (let i of returnableUser())
+  console.log('i form returnableUser:', i);
+
+
+
