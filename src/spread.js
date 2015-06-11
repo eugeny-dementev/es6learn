@@ -18,9 +18,17 @@ spreadArgs(...args);
 args = [0, ...args, 4]
 spreadArgs(...args);
 
+// partial spread to function
+partialSpread(...[1, 2, 3], err => ::console.log(err));
+
 function* oneTwoThree() {
   yield *[1, 2, 3];
 };
+
+function partialSpread(err, req, res, next) {
+  console.log(...arguments);
+  console.log([...arguments]);
+}
 
 function spreadArgs(...params) {
   // spread between others arguments
