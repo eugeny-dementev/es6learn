@@ -19,7 +19,10 @@ args = [0, ...args, 4]
 spreadArgs(...args);
 
 // partial spread to function
-partialSpread(...[1, 2, 3], err => ::console.log(err));
+partialSpread(...[1, 2, 3], err => console.log(err));
+
+// spread string lol
+console.log(..."hello");
 
 function* oneTwoThree() {
   yield *[1, 2, 3];
