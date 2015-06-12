@@ -37,7 +37,7 @@ let ii = function* () {
 console.log(ii.next()); // return object {value: 0, done: false} - done is sign to stop iterate.
 console.log(ii.next(400)); // not the same as python, just return {value: 1, done: false}, of course we can make own behaviour
 console.log(ii.next()); // return object {value: 2, done: false}
-console.log(ii.return()); // return object {value: undefined, done: true} // in babel
+console.log(ii.return(40)); // return object {value: 40, done: true} // in babel
 
 var pleaseDontStop = 5;
 for (let i of ii) // will never execute, because return() method executed before.
