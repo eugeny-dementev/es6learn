@@ -24,6 +24,9 @@ partialSpread(...[1, 2, 3], err => console.log(err));
 // spread string lol
 console.log(..."hello");
 
+// default spread params
+// defaultArgs();
+
 function* oneTwoThree() {
   yield *[1, 2, 3];
 };
@@ -38,3 +41,6 @@ function spreadArgs(...params) {
   console.log('values:', ...params, '.');
 }
 
+// function defaultArgs(...params = [1, 2, 3]) { unfortunaly imposible
+//   console.log(...arguments);
+//}
