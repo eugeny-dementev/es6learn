@@ -25,3 +25,8 @@ function defRestArr([...rest] = [1, 2, 3]) {
 function defPartRestArr([first, second, ...rest] = [1, 2, 3, 4]) {
   console.log(`rest is ${rest}`);
 }
+
+// unpossible :(
+// function defReversePartRestArr([...rest, last] = [1, 2, 3]) {
+//   console.log(`rest is ${rest}`);
+// }
