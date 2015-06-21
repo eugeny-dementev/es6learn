@@ -3,4 +3,4 @@ out
 uglyout
 **/*.swp
 **/*.swo
-
+.idea
