@@ -4,7 +4,10 @@ print();
 defObj();
 defArr();
 defRestArr();
+defRestArr([1, 2]);
 defPartRestArr();
+defPartRestArr([1, 2]);
+defCalc('online');
 
 function print(print = false) {
   if (print) console.log('print is true');
@@ -23,9 +26,12 @@ function defRestArr([...rest] = [1, 2, 3]) {
 }
 
 function defPartRestArr([first, second, ...rest] = [1, 2, 3, 4]) {
-  console.log(`rest is ${rest}`);
+  console.log(`rest is ${rest.length}`);
 }
 
+function defCalc(module, file = module, path = `/${module}/${file}`) {
+  console.log(`module ${module}, file ${file}, path ${path}`);
+}
 // unpossible :(
 // function defReversePartRestArr([...rest, last] = [1, 2, 3]) {
 //   console.log(`rest is ${rest}`);
