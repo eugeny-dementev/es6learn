@@ -1,4 +1,13 @@
-var world = 'world',
-  hello = 'hello';
+var temple = `
+   †
+   ∆
+   Ω
+  ¥¥¥
+ ≤©©©≥
+ППППППП`; // multiple string
 
-console.log(`${hello} ${world}`);
+var prelude = 'answer is';
+var template = `${prelude} ${40 + 2}`;
+
+console.log(temple);
+console.log(template);
