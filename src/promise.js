@@ -1,4 +1,4 @@
-let promise = new Promise((resolve, reject) => {
+let promise = new Promise((resolve, reject) => { // if define, babel use native
   let result = 'result';
   resolve(result);
 });
