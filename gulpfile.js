@@ -17,6 +17,19 @@ gulp.task('default', function() {
     .pipe(gulp.dest('out'));
 });
 
+gulp.task('black', function() {
+  var conf = {
+    blacklist: [
+      //'es6.blockScoping',
+      'es6.arrowFunctions'
+    ]
+  };
+
+  return gulp.src('src/presentation/forof_arrow.js')
+    .pipe(babel(conf))
+    .pipe(gulp.dest('out/presentation'));
+});
+
 gulp.task('forof', function() {
   var forofAllow = {
     blacklist: ['es6.forOf']
